@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'ngUpload', 'ui.bootstrap', 'blueimp.fileupload']).
+angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'ngUpload', 'ui.bootstrap']).
 config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 	$routeProvider.when('/add', {
 		templateUrl: 'page/add',
