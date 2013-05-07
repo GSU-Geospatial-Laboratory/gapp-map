@@ -31,7 +31,7 @@ function uploadItem(item, req) {
 			console.log(err, 'Error reading file');
 			return;
 		}
-		console.log(file_info)
+		//console.log(file_info)
 		// create a read stream
 		var bodyStream = fs.createReadStream(item.path);
 
@@ -47,7 +47,7 @@ function uploadItem(item, req) {
 		s3.PutObject(options, function(err, data) {
 			if (err) {
 				fmt.field('UploadFailed', fileName);
-				console.log(err);
+				//console.log(err);
 				fileName = null;
 				// put this item back on the queue if retries is less than the cut-off
 				if (item.retries > 2) {
@@ -80,7 +80,7 @@ function isOn(val) {
 function saveItem(req, fileName) {
 	if (req.body) {
 		var currentTime = new Date();
-		console.log(req.body)
+		//console.log(req.body)
 
 		var place = new db.Place({
 			type: req.param('type'),
@@ -132,7 +132,7 @@ exports.addPlace = function(req, res) {
 	} else {
 		var file = req.files.file;
 		fileName = uploadItem(file, req)
-		console.log(fileName)
+		//console.log(fileName)
 		fileUploadMessage = '<b>"' + file.name + '"<b> uploaded to the server at ' + new Date().toString();
 		pictureUrl = file.name;
 		var responseObj = {
