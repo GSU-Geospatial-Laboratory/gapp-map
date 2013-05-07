@@ -1,0 +1,107 @@
+#map-container {
+  background: #eee;
+  position: absolute;
+  top: 3em; /* must match height of #site-header */
+  right: 0;
+  bottom: 0em;
+  left: 0;
+  z-index: 10;
+}
+#map {
+  height: 100%;
+}
+
+@media (max-width: 980px){
+  .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+    padding: 0px;
+  }
+  
+  #map-container{
+    top: 3em;
+  }
+  /*body{
+    background: #000;
+  }*/
+  .nav-collapse .nav>li>a, .nav-collapse .dropdown-menu a {
+    font-weight: normal;
+    padding-top: 3px;
+
+  }
+
+  .nav-collapse .in .collapse{
+    border-color: #000;
+    border:2px;
+  }
+
+  .nav-collapse .navbar-form, .nav-collapse .navbar-search {
+    margin-bottom:0px;
+  }
+
+  .nav-collapse{
+    z-index: 100000;
+    background: #ce4213;
+  }
+  #map .leaflet-popup-content-wrapper {
+    width:200px;
+  }
+}
+
+
+/*
+ * jQuery File Upload UI Plugin CSS 8.0
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+.fileupload-buttonbar .btn,
+.fileupload-buttonbar .toggle {
+  margin-bottom: 5px;
+}
+.progress-animated .bar {
+  background: url(../img/progressbar.gif) !important;
+  filter: none;
+}
+.fileupload-loading {
+  float: right;
+  width: 32px;
+  height: 32px;
+  background: url(../img/loading.gif) center no-repeat;
+  background-size: contain;
+  display: none;
+}
+.fileupload-processing .fileupload-loading {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .fileupload-buttonbar .toggle,
+  .files .toggle,
+  .files .btn span {
+    display: none;
+  }
+  .files .name {
+    width: 80px;
+    word-wrap: break-word;
+  }
+}

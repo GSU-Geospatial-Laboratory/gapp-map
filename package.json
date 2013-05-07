@@ -1,0 +1,20 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "0.10.2",
+    "npm": "1.2.15"
+  },
+  "dependencies": {
+    "express": "3.0.6",
+    "jade": ">= 0.0.1",
+    "mongoose": "~3.6.7",
+    "knox": "~0.7.0",
+    "multiparty": "~2.1.5",
+    "awssum-amazon-s3": "~1.2.4",
+    "fmt": "~0.4.0",
+    "awssum": "~1.0.0-beta",
+    "awssum-amazon": "~1.0.2"
+  }
+}

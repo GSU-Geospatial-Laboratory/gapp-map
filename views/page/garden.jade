@@ -1,0 +1,12 @@
+div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="opts")
+	div.modal-header
+		button(type="button", class="close", ng-click="close()")
+			i.icon-remove-circle
+		h3 {{thisGarden.type}}
+	div.modal-body
+		p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
+		p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
+		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
+		img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
+	div.modal-footer
+		p Submitted on {{thisGarden.dateCreated | date:'shortDate'}}

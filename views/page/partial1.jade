@@ -1,0 +1,9 @@
+div(ng-controller='PlaceCtrl')
+	form
+		select(ng-model='type')
+			option(selected, value='tire') Tire
+		input(type='text', ng-model='picture')
+		input(type='text', ng-model='loc')
+		input(type='file')
+		button(ng-click='addPlace()') Add
+	p {{type}}
