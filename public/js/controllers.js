@@ -13,31 +13,34 @@ function MapCtrl($scope, $http, $location) {
 
 	$scope.allGardens
 
-	$scope.sendToGarden = function(e,garden) {
-		map.setView(e.target._latlng, 15)
+	$scope.sendToGarden = function(e, garden) {
+		map.panTo(e.target._latlng)
+		map.setView(e.target._latlng,15)
 		$scope.$apply(function() {
 			$location.path('/garden' + garden);
 		});
 	}
 	var value = ''
 
-	$.getJSON('/api/place', function(data) {
-//		console.log(data.data)
-		$scope.allGardens = data.data
-		$.each(data.data, function(i, val) {
-//			console.log(val.loc[0])
-			if (val.loc[0] == undefined) {
-				return;
-			} else {
-				var latlngs = val.loc[0].split(',')
-				var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
-		//		console.log(latLng)
-				L.marker(latLng).on('click', function(e) {
-					$scope.sendToGarden(e, val._id)
-				}).addTo(map)
-			}
+	$scope.getMarkers = function() {
+
+		$.getJSON('/api/place', function(data) {
+			$scope.allGardens = data.data
+			$.each(data.data, function(i, val) {
+				if (val.loc[0] == undefined) {
+					return;
+				} else {
+					var latlngs = val.loc[0].split(',')
+					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
+					allMarkers.push(L.marker(latLng).on('click', function(e) {
+						$scope.sendToGarden(e, val._id)
+					}).addTo(map))
+				}
+			})
 		})
-	})
+	}
+
+	$scope.getMarkers()
 
 
 
@@ -121,6 +124,7 @@ function PlaceCtrl($scope, $http, $location) {
 			$scope.response = JSON.parse(content); // Presumed content is a json string!
 			console.log($scope.response.url)
 			$scope.close()
+			$scope.getMarkers()
 		}
 	};
 }

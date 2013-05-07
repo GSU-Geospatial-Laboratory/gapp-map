@@ -1,5 +1,7 @@
 var fs = require('fs');
 
+var async = require('async');
+
 var fmt = require('fmt');
 var amazonS3 = require('awssum-amazon-s3');
 
@@ -11,49 +13,68 @@ var s3 = new amazonS3.S3({
 	'region': amazonS3.US_EAST_1
 });
 
+var uploadItemQueue = async.queue(uploadItem, 3);
+uploadItemQueue.drain = function() {
+	fmt.line();
+	fmt.title('Finished');
+	fmt.field('UploadedFiles', argv._.length);
+	fmt.sep();
+};
+
 function uploadItem(item, req) {
 	//console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
-	//console.log(fileName)
-	// create a read stream
-	var bodyStream = fs.createReadStream(item.filename);
+	//console.log('filename: ' + fileName)
 
-	var options = {
-		BucketName: 'gapp-map',
-		ObjectName: fileName,
-		Acl: 'public-read',
-		ContentLength: item.size,
-		Body: bodyStream
-	};
-
-	fmt.field('Uploading', fileName + ' (' + item.size + ')');
-	s3.PutObject(options, function(err, data) {
+	fs.stat(item.path, function(err, file_info) {
 		if (err) {
-			fmt.field('UploadFailed', fileName);
-			console.log(err);
-
-			// put this item back on the queue if retries is less than the cut-off
-			if (item.retries > 2) {
-				fmt.field('UploadCancelled', fileName);
-			} else {
-				// try again
-				item.retries = item.retries ? item.retries + 1 : 1;
-				uploadItemQueue.push(item);
-			}
-
-			callback();
+			console.log(err, 'Error reading file');
 			return;
 		}
+		console.log(file_info)
+		// create a read stream
+		var bodyStream = fs.createReadStream(item.path);
 
-		fmt.field('Uploaded', fileName);
-	});
+		var options = {
+			BucketName: 'gapp-map',
+			ObjectName: fileName,
+			Acl: 'public-read',
+			ContentLength: file_info.size,
+			Body: bodyStream
+		};
+
+		fmt.field('Uploading', fileName + ' (' + item.size + ')');
+		s3.PutObject(options, function(err, data) {
+			if (err) {
+				fmt.field('UploadFailed', fileName);
+				console.log(err);
+				fileName = null;
+				// put this item back on the queue if retries is less than the cut-off
+				if (item.retries > 2) {
+					fmt.field('UploadCancelled', fileName);
+					fileName = null;
+				} else {
+					// try again
+					item.retries = item.retries ? item.retries + 1 : 1;
+					uploadItemQueue.push(item);
+				}
+
+				//callback();
+				return;
+			}
+
+			fmt.field('Uploaded', fileName);
+		});
+	})
 	return fileName;
 }
 
-function isOn(val){
-	if (val=='on'){
+function isOn(val) {
+	if (val == 'on') {
 		return true;
-	}else{return false}
+	} else {
+		return false
+	}
 }
 
 function saveItem(req, fileName) {
@@ -72,8 +93,7 @@ function saveItem(req, fileName) {
 			noPesticides: isOn(req.param('noPesticides')),
 			loc: req.param('loc')
 		})
-		place.save(function(err) {
-		})
+		place.save(function(err) {})
 	} else {
 		db.Place.update({
 			_id: req.body.data.id
@@ -112,6 +132,7 @@ exports.addPlace = function(req, res) {
 	} else {
 		var file = req.files.file;
 		fileName = uploadItem(file, req)
+		console.log(fileName)
 		fileUploadMessage = '<b>"' + file.name + '"<b> uploaded to the server at ' + new Date().toString();
 		pictureUrl = file.name;
 		var responseObj = {
@@ -120,16 +141,18 @@ exports.addPlace = function(req, res) {
 		}
 	}
 	saveItem(req, fileName);
+
 	res.send(JSON.stringify(responseObj));
 }
 
-exports.getPlace = function(req,res){
-		db.Place.find({
-			status : true
-		}).exec(function(err, result) {
-			res.type('application/json');
-			res.jsonp({
-				data : result
-			})
-		})
+exports.getPlace = function(req, res) {
+	db.Place.find({
+		status: true
+	}).exec(function(err, result) {
+		var responseObj = {
+			data: result
+		}
+		res.type('json');
+		res.send(responseObj)
+	})
 }

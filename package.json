@@ -15,6 +15,7 @@
     "awssum-amazon-s3": "~1.2.4",
     "fmt": "~0.4.0",
     "awssum": "~1.0.0-beta",
-    "awssum-amazon": "~1.0.2"
+    "awssum-amazon": "~1.0.2",
+    "async": "~0.2.8"
   }
 }
