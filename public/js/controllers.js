@@ -117,14 +117,19 @@ function PlaceCtrl($scope, $http, $location) {
 	}
 
 	$scope.uploadComplete = function(content, completed) {
-		console.log(content, completed)
+		//console.log(content, completed)
 		//console.log('yup')
 		if (completed && content.length > 0) {
-			console.log('content: ' + content)
-			$scope.response = JSON.parse(content); // Presumed content is a json string!
-			console.log($scope.response.url)
+			$scope.response = JSON.parse(content);
+			if ($scope.response.url == 'not an image'){
+				return;
+			}else{
+		//	console.log('content: ' + content)
+			 // Presumed content is a json string!
+		//	console.log($scope.response.url)
 			$scope.close()
 			$scope.getMarkers()
+		}
 		}
 	};
 }

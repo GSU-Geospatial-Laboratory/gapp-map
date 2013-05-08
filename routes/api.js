@@ -21,8 +21,15 @@ uploadItemQueue.drain = function() {
 	fmt.sep();
 };
 
+function isImage(type) {
+	if (type == 'image/jpeg' || type == 'image/png') {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function uploadItem(item, req) {
-	//console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
 	//console.log('filename: ' + fileName)
 
@@ -121,7 +128,7 @@ exports.name = function(req, res) {
 exports.addPlace = function(req, res) {
 	res.setHeader('Content-Type', 'text/html');
 	var fileName = null;
-	var pictureUrl = '/path/to/default/pictures';
+
 	var fileUploadMessage = '';
 	if (req.files.length == 0 || req.files.file.size == 0) {
 		fileUploadMessage = 'No file uploaded at ' + new Date().toString();
@@ -131,8 +138,13 @@ exports.addPlace = function(req, res) {
 		}
 	} else {
 		var file = req.files.file;
-		fileName = uploadItem(file, req)
-		//console.log(fileName)
+		if (isImage(file.type)) {
+			fileName = uploadItem(file, req)
+
+		} else {
+			fileName = 'not an image';
+		}
+		console.log(fileName)
 		fileUploadMessage = '<b>"' + file.name + '"<b> uploaded to the server at ' + new Date().toString();
 		pictureUrl = file.name;
 		var responseObj = {
@@ -140,7 +152,10 @@ exports.addPlace = function(req, res) {
 			url: fileName
 		}
 	}
-	saveItem(req, fileName);
+	if (fileName != 'not an image'){
+			saveItem(req, fileName);
+
+	}
 
 	res.send(JSON.stringify(responseObj));
 }
