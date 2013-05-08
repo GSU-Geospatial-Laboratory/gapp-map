@@ -19,10 +19,11 @@ function MapCtrl($scope, $http, $location) {
 	$scope.allGardens
 
 	$scope.sendToGarden = function(e, garden) {
+		console.log(e, garden)
 		map.panTo(e.target._latlng)
 		map.setView(e.target._latlng, 15)
 		$scope.$apply(function() {
-			$location.path('/add2' + garden);
+			$location.path('/garden' + garden);
 		});
 	}
 	var value = ''
