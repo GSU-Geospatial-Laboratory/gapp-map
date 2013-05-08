@@ -4,8 +4,12 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 'ngUpload', 'ui.bootstrap']).
 config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-	$routeProvider.when('/add', {
-		templateUrl: 'page/add',
+	$routeProvider.when('/add1', {
+		templateUrl: 'page/add1',
+		controller: PlaceCtrl
+	});
+	$routeProvider.when('/add2', {
+		templateUrl: 'page/add2',
 		controller: PlaceCtrl
 	});
 	$routeProvider.when('/about', {

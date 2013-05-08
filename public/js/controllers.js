@@ -5,19 +5,24 @@
 
 function MapCtrl($scope, $http, $location) {
 	$scope.goAdd = function() {
-		$location.path('/add')
+
+		$location.path('/add1')
 	}
 	$scope.goAbout = function() {
 		$location.path('/about')
 	}
 
+	map.on('contextmenu', function(e) {
+		//console.log(e)
+	})
+
 	$scope.allGardens
 
 	$scope.sendToGarden = function(e, garden) {
 		map.panTo(e.target._latlng)
-		map.setView(e.target._latlng,15)
+		map.setView(e.target._latlng, 15)
 		$scope.$apply(function() {
-			$location.path('/garden' + garden);
+			$location.path('/add2' + garden);
 		});
 	}
 	var value = ''
@@ -80,15 +85,35 @@ function AppCtrl($scope, $http) {
 }
 
 function PlaceCtrl($scope, $http, $location) {
+	$scope.goAdd = function() {
+		$scope.shouldBeOpen = true;
+	}
+	$scope.goAbout = function() {
+		$location.path('/about')
+	}
 
-	var latLng = map.getCenter()
-	$scope.loc = [latLng.lat, latLng.lng]
-	console.log($scope.loc)
+
+
+	$scope.loc = addLatlng
+	//console.log($scope.loc)
+	//var latLng = map.getCenter()
+	//$scope.loc = [latLng.lat, latLng.lng]
+	//console.log($scope.loc)
 
 	$scope.open = function() {
 		$scope.shouldBeOpen = true;
 	};
 
+	$scope.closeOne = function() {
+		$scope.shouldBeOpen = false;
+		map.on('click', function(e) {
+			addLatlng = [e.latlng.lat, e.latlng.lng]
+			$scope.$apply(function() {
+				$location.path('/add2');
+			});
+		})
+
+	}
 	$scope.close = function() {
 		$scope.shouldBeOpen = false;
 		$location.path('/')
@@ -121,21 +146,22 @@ function PlaceCtrl($scope, $http, $location) {
 		//console.log('yup')
 		if (completed && content.length > 0) {
 			$scope.response = JSON.parse(content);
-			if ($scope.response.url == 'not an image'){
+			if ($scope.response.url == 'not an image') {
 				return;
-			}else{
-		//	console.log('content: ' + content)
-			 // Presumed content is a json string!
-		//	console.log($scope.response.url)
-			$scope.close()
-			$scope.getMarkers()
-		}
+			} else {
+				//	console.log('content: ' + content)
+				// Presumed content is a json string!
+				//	console.log($scope.response.url)
+				$scope.close()
+				$scope.getMarkers()
+			}
 		}
 	};
 }
 
 function GardenCtrl($scope, $http, $location, $route, $routeParams) {
 	$scope.id = $routeParams.id
+	$scope.fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + $location.absUrl()
 	//console.log($scope.allGardens)
 
 	$scope.open = function() {

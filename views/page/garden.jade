@@ -2,11 +2,19 @@ div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="o
 	div.modal-header
 		button(type="button", class="close", ng-click="close()")
 			i.icon-remove-circle
-		h3 {{thisGarden.type}}
+		h3 Pollinator Garden
 	div.modal-body
+		h5 {{thisGarden.type}}
 		p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
 		p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
 		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
 		img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
+		<br>
+		p.muted.small Share your pollinator garden
+		a(href='{{fbUrl}}', target="_blank").btn
+			i.icon-facebook-sign.icon-large
+		| &nbsp;
+		a(href="https://twitter.com/share", target='_blank').btn
+			i.icon-twitter-sign.icon-large
 	div.modal-footer
 		p Submitted on {{thisGarden.dateCreated | date:'shortDate'}}

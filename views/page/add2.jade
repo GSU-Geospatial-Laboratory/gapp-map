@@ -1,0 +1,31 @@
+div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="opts")
+	div.modal-header
+		button(type="button", class="close", ng-click="close()")
+			i.icon-remove-circle
+		h3 Add a pollinator garden (step 2)
+	div.modal-body
+		p Provide some details about the pollinator garden
+		form(ng-upload, action="/api/place", method="POST", enctype="multipart/form-data", encoding="multipart/form-data")
+			input(type='text', ng-model='loc', name='loc', ng-show='map!=null')
+			label Who created the garden? <br>
+				select(name='type', ng-model='type')
+					option(value='Private Citizen') Private Citizen
+					option(value='Nonprofit Organization') Nonprofit Organization
+					option(value='School') School
+					option(value='Business') Business
+			label(class='checkbox')
+				input(type='checkbox', name='habitat', ng-model='habitat')span Do you provide a habitat for pollinators?
+			label(class='checkbox')
+				input(type='checkbox', name='foodSource', ng-model='foodSource')span Do you provide a food source for pollinators?
+			label(class='checkbox')
+				input(type='checkbox', name='noPesticides', ng-model='noPesticides')span Do you provide a pesticide free garden?			
+			<br>
+			label(class='file') Upload a picture of your garden <br><br>
+				input(type='file', name='file', ng-model='file')
+			div(ng-show="response.url == 'not an image'").alert
+				p Hmm... the file you selected doesn't appear to be an image, please try again
+			label.pull-right
+				input(type='submit', value='Submit', class='btn btn-success', upload-submit="uploadComplete(content, completed)")
+				span &nbsp;
+				a.btn.btn-warning.cancel(href='#', ng-click='close()') Cancel		
+		
