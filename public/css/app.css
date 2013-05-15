@@ -10,6 +10,9 @@
 #map {
   height: 100%;
 }
+#map.cross {
+    cursor: url('cursor.cur'), crosshair;
+}
 
 @media (max-width: 980px){
   .navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {

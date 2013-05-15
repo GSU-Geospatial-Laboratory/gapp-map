@@ -19,7 +19,7 @@ function MapCtrl($scope, $http, $location) {
 	$scope.allGardens
 
 	$scope.sendToGarden = function(e, garden) {
-		console.log(e, garden)
+		//console.log(e, garden)
 		map.panTo(e.target._latlng)
 		map.setView(e.target._latlng, 15)
 		$scope.$apply(function() {
@@ -107,17 +107,22 @@ function PlaceCtrl($scope, $http, $location) {
 
 	$scope.closeOne = function() {
 		$scope.shouldBeOpen = false;
-		map.on('click', function(e) {
+		map.addEventListener('click', function(e) {
 			addLatlng = [e.latlng.lat, e.latlng.lng]
 			$scope.$apply(function() {
 				$location.path('/add2');
 			});
 		})
+		$('#map').addClass("cross");
+
 
 	}
 	$scope.close = function() {
 		$scope.shouldBeOpen = false;
 		$location.path('/')
+		map.removeEventListener('click')
+		$('#map').removeClass("cross");
+
 	};
 
 	$scope.opts = {
