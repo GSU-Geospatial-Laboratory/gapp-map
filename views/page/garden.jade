@@ -4,13 +4,13 @@ div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="o
 			i.icon-remove-circle
 		h3 Pollinator Garden
 	div.modal-body
-		h5 {{thisGarden.type}}
+		h5 This garden was added by a {{thisGarden.type | lowercase}}
 		p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
 		p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
 		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
 		img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
 		<br>
-		p.muted.small Share your pollinator garden
+		p.muted.small Share this pollinator garden
 		a(href='{{fbUrl}}', target="_blank").btn
 			i.icon-facebook-sign.icon-large
 		| &nbsp;

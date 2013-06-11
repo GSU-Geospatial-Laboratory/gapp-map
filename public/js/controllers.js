@@ -1,6 +1,7 @@
 'use strict';
 
 
+
 /* Controllers */
 
 function MapCtrl($scope, $http, $location) {
@@ -36,16 +37,41 @@ function MapCtrl($scope, $http, $location) {
 				if (val.loc[0] == undefined) {
 					return;
 				} else {
+					var greenLevel = 0;
+					var currentIcon;
+					//console.log(val)
+					greenLevel += val.habitat ? 1 : 0;
+					greenLevel += val.foodSource ? 1 : 0;
+					greenLevel += val.noPesticides ? 1 : 0;
+					console.log(greenLevel)
+					switch (greenLevel) {
+						case 0:
+							currentIcon = g0Icon;
+							break;
+						case 1:
+							currentIcon = g2Icon;
+							break;
+						case 2:
+							currentIcon = g3Icon;
+							break;
+						case 3:
+							currentIcon = g3Icon;
+							break;
+					}
+
+
 					var latlngs = val.loc[0].split(',')
 					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
-					allMarkers.push(L.marker(latLng).on('click', function(e) {
+					allMarkers.push(L.marker(latLng, {
+						icon: currentIcon
+					}).on('click', function(e) {
 						$scope.sendToGarden(e, val._id)
 					}).addTo(map))
+
 				}
 			})
 		})
 	}
-
 	$scope.getMarkers()
 
 

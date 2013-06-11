@@ -6,7 +6,7 @@ html(ng-app="myApp")
 		title Greater Atlanta Pollinator Partnership
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
-		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css')
 		link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css')
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
@@ -23,7 +23,7 @@ html(ng-app="myApp")
 					//	span.icon-bar
 					a.brand(href='#').hidden-phone Greater Atlanta Pollinator Partnership
 					a.brand(href='#').visible-phone GAPP
-					p.navbar-btn.pull-right <button class='btn' ng-click='goAdd()'>Add</button> &nbsp; <button class='btn' ng-click='goAbout()'>About</button>
+					p.navbar-btn.pull-right <button class='btn btn-primary' ng-click='goAdd()'><i class='icon-plus-sign'></i> Add a pollinator garden</button> &nbsp; <button class='btn btn-primary' ng-click='goAbout()'>About</button>
 
 					div.nav-collapse.collapse
 							
@@ -54,4 +54,45 @@ html(ng-app="myApp")
 			attribution: 'Map data &copy; 2011 OpenStreetMap contributors',
 			key: cmk
 			}).addTo(map);
+			var g0Icon = L.icon({
+				iconUrl: 'images/g0.png',
+				// shadowUrl: 'leaf-shadow.png',
+
+				iconSize: [25, 40], // size of the icon
+				//shadowSize:   [50, 64], // size of the shadow
+				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+				//shadowAnchor: [4, 62],  // the same for the shadow
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+			var g1Icon = L.icon({
+				iconUrl: 'images/g1.png',
+				// shadowUrl: 'leaf-shadow.png',
+
+				iconSize: [25, 40], // size of the icon
+				//shadowSize:   [50, 64], // size of the shadow
+				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+				//shadowAnchor: [4, 62],  // the same for the shadow
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+			var g2Icon = L.icon({
+				iconUrl: 'images/g2.png',
+				// shadowUrl: 'leaf-shadow.png',
+
+				iconSize: [25, 40], // size of the icon
+				//shadowSize:   [50, 64], // size of the shadow
+				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+				//shadowAnchor: [4, 62],  // the same for the shadow
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+			var g3Icon = L.icon({
+				iconUrl: 'images/g3.png',
+				// shadowUrl: 'leaf-shadow.png',
+
+				iconSize: [25, 40], // size of the icon
+				//shadowSize:   [50, 64], // size of the shadow
+				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
+				//shadowAnchor: [4, 62],  // the same for the shadow
+				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+
 			
