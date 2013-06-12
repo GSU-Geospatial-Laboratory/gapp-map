@@ -34,6 +34,26 @@ function isImage(type) {
 	}
 }
 
+function updateData() {
+	db.Place.find({
+		status: true
+	}).exec(function(err, result) {
+		json2csv({
+			data: result,
+			fields: ['type', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'loc'], fieldNames: ['Type of Garden', 'Date Added', 'Provides pollinator habitat', 'Provides pollinator food source', 'Does not use pesticides', 'Latitude, Longitude']
+		}, function(err, csv) {
+			if (err) console.log(err);
+			fs.writeFile("public/download/data.csv", csv, function(err) {
+				if (err) {
+					console.log(err);
+				} else {
+					console.log("The file was saved!");
+				}
+			});
+		});
+	})
+}
+
 function uploadItem(item, req) {
 	console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
@@ -159,23 +179,7 @@ exports.addPlace = function(req, res) {
 	}
 	if (fileName != 'not an image') {
 		saveItem(req, fileName);
-		db.Place.find({
-			status: true
-		}).exec(function(err, result) {
-			json2csv({
-				data: result,
-				fields: ['type', 'dateCreated', 'dateModified', 'habitat', 'foodSource', 'noPesticides', 'loc']
-			}, function(err, csv) {
-				if (err) console.log(err);
-				fs.writeFile("public/download/data.csv", csv, function(err) {
-					if (err) {
-						console.log(err);
-					} else {
-						console.log("The file was saved!");
-					}
-				});
-			});
-		})
+		updateData();
 		//console.log(data)
 	}
 
