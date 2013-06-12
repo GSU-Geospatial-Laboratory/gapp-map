@@ -9,6 +9,6 @@ div(ng-controller='AboutCtrl',modal="shouldBeOpen", close="close()", options="op
 		p For more information about GAPP, please visit our <a href="http://www.gapp.org">homepage</a>.
 		p This mapping project is a collaboration between the <a href="http://www.atlantabotanicalgarden.org/">Atlanta Botanical Garden</a> and the Georgia State University <a href="http://geosciences.gsu.edu">Department of Geosciences</a>.
 		p
-			a(ng-href='/download/data.csv', target=_blank) Download the Atlanta pollinator data set
+			a(ng-click='downloadData()') Download the Atlanta pollinator data set
 
 	div.modal-footer
