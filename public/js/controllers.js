@@ -6,15 +6,18 @@
 
 function MapCtrl($scope, $http, $location) {
 	$scope.goAdd = function() {
+		$location.path('/add1');
+	};
 
-		$location.path('/add1')
-	}
 	$scope.goAbout = function() {
 		$location.path('/about')
-	}
-	$scope.downloadData = function(){
-		location.href='download/data.csv'
-	}
+	};
+
+	$scope.downloadData = function() {
+		location.href = 'download/data.csv';
+		$location.path('/');
+		$('#map').removeClass("cross");
+	};
 
 	map.on('contextmenu', function(e) {
 		//console.log(e)

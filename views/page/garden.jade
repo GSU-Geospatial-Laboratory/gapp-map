@@ -10,11 +10,12 @@ div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="o
 		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
 		img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
 		<br>
-		p.muted.small Share this pollinator garden
-		a(href='{{fbUrl}}', target="_blank").btn
-			i.icon-facebook-sign.icon-large
-		| &nbsp;
-		a(href="https://twitter.com/share", target='_blank').btn
-			i.icon-twitter-sign.icon-large
+		
 	div.modal-footer
-		p Submitted on {{thisGarden.dateCreated | date:'shortDate'}}
+		span.pull-left
+			a(href='{{fbUrl}}', target="_blank").btn
+				i.icon-facebook-sign.icon-large
+			| &nbsp;
+			a(href="https://twitter.com/share", target='_blank').btn
+				i.icon-twitter-sign.icon-large
+		span Submitted on {{thisGarden.dateCreated | date:'shortDate'}}
