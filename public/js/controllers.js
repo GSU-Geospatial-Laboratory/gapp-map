@@ -12,6 +12,9 @@ function MapCtrl($scope, $http, $location) {
 	$scope.goAbout = function() {
 		$location.path('/about')
 	}
+	$scope.downloadData = function(){
+		location.href='download/data.csv'
+	}
 
 	map.on('contextmenu', function(e) {
 		//console.log(e)
@@ -39,11 +42,9 @@ function MapCtrl($scope, $http, $location) {
 				} else {
 					var greenLevel = 0;
 					var currentIcon;
-					//console.log(val)
 					greenLevel += val.habitat ? 1 : 0;
 					greenLevel += val.foodSource ? 1 : 0;
 					greenLevel += val.noPesticides ? 1 : 0;
-					console.log(greenLevel)
 					switch (greenLevel) {
 						case 0:
 							currentIcon = g0Icon;
@@ -58,8 +59,6 @@ function MapCtrl($scope, $http, $location) {
 							currentIcon = g3Icon;
 							break;
 					}
-
-
 					var latlngs = val.loc[0].split(',')
 					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
 					allMarkers.push(L.marker(latLng, {
@@ -86,6 +85,7 @@ function AboutCtrl($scope, $http, $location) {
 	$scope.close = function() {
 		$scope.shouldBeOpen = false;
 		$location.path('/')
+		$('#map').removeClass("cross");
 	};
 
 	$scope.items = ['item1', 'item2'];

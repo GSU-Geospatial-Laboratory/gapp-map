@@ -1,5 +1,10 @@
 var fs = require('fs');
+var gm = require('gm'),
+	imageMagick = gm.subClass({
+		imageMagick: true
+	});
 
+var json2csv = require('json2csv');
 var async = require('async');
 
 var fmt = require('fmt');
@@ -30,6 +35,7 @@ function isImage(type) {
 }
 
 function uploadItem(item, req) {
+	console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
 	//console.log('filename: ' + fileName)
 
@@ -144,7 +150,6 @@ exports.addPlace = function(req, res) {
 		} else {
 			fileName = 'not an image';
 		}
-		console.log(fileName)
 		fileUploadMessage = '<b>"' + file.name + '"<b> uploaded to the server at ' + new Date().toString();
 		pictureUrl = file.name;
 		var responseObj = {
@@ -152,9 +157,26 @@ exports.addPlace = function(req, res) {
 			url: fileName
 		}
 	}
-	if (fileName != 'not an image'){
-			saveItem(req, fileName);
-
+	if (fileName != 'not an image') {
+		saveItem(req, fileName);
+		db.Place.find({
+			status: true
+		}).exec(function(err, result) {
+			json2csv({
+				data: result,
+				fields: ['type', 'dateCreated', 'dateModified', 'habitat', 'foodSource', 'noPesticides', 'loc']
+			}, function(err, csv) {
+				if (err) console.log(err);
+				fs.writeFile("public/download/data.csv", csv, function(err) {
+					if (err) {
+						console.log(err);
+					} else {
+						console.log("The file was saved!");
+					}
+				});
+			});
+		})
+		//console.log(data)
 	}
 
 	res.send(JSON.stringify(responseObj));
