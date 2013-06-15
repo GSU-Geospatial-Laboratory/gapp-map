@@ -40,14 +40,15 @@ function updateData() {
 	}).exec(function(err, result) {
 		json2csv({
 			data: result,
-			fields: ['type', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'loc'], fieldNames: ['Type of Garden', 'Date Added', 'Provides pollinator habitat', 'Provides pollinator food source', 'Does not use pesticides', 'Latitude, Longitude']
+			fields: ['type', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'loc'],
+			fieldNames: ['Type of Garden', 'Date Added', 'Provides pollinator habitat', 'Provides pollinator food source', 'Does not use pesticides', 'Latitude, Longitude']
 		}, function(err, csv) {
 			if (err) console.log(err);
 			fs.writeFile("public/download/data.csv", csv, function(err) {
 				if (err) {
 					console.log(err);
 				} else {
-					console.log("The file was saved!");
+					console.log("data.csv successfully updated!");
 				}
 			});
 		});
