@@ -3,6 +3,7 @@ var allMarkers = [];
 var addLatlng = [];
 var gsuLocation = [33.75317514689363, -84.38607215881348]
 map = L.map('map').setView(gsuLocation, 11);
+L.control.locate().addTo(map);
 var cmk = "315bfb243f9f4e8fb6adc193a7367eeb"
 L.tileLayer('http://c.tiles.mapbox.com/v3/examples.map-vyofok3q/{z}/{x}/{y}.png', {
 	attribution: 'Map data &copy; 2011 OpenStreetMap contributors',

@@ -31,7 +31,19 @@ module.exports = function(grunt) {
       // }//,
       my_target: {
         files: {
-          'public/js/app.min.js': ['public/js/lib/angular/ngUpload.min.js', 'public/js/lib/angular/ui-bootstrap-0.3.0.min.js', 'public/js/app.js', 'public/js/services.js', 'public/js/controllers.js','public/js/filters.js', 'public/js/directives.js', 'public/js/map.js']
+          'public/js/app.min.js': ['public/js/lib/angular/ngUpload.min.js', 'public/js/lib/angular/ui-bootstrap-0.3.0.min.js', 'public/js/app.js', 'public/js/services.js', 'public/js/controllers.js','public/js/filters.js', 'public/js/directives.js','public/js/L.Control.Locate.js', 'public/js/map.js']
+        }
+      }
+    },
+    cssmin: {
+      report: 'min',
+      add_banner: {
+        options: {
+          banner: '/* My minified css file */'
+        },
+
+        files: {
+          'public/css/app.min.css': ['public/css/bootstrap-responsive.min.css', 'public/css/L.Control.Locate.css', 'public/css/app.css']
         }
       }
     },
@@ -81,8 +93,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'uglify', 'cssmin']);
 
 };

@@ -5,12 +5,12 @@ html(ng-app="myApp")
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 		title Greater Atlanta Pollinator Partnership
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
-		link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
 		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css')
 		link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css')
 		//[if lte IE 8]
 			link(rel="stylesheet",href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css")
-		link(rel='stylesheet', href='/css/app.css')
+			link(rel="stylesheet", href="/css/L.Control.Locate.ie.css")
+		link(rel='stylesheet', href='/css/app.min.css')
 
 	body(ng-controller="MapCtrl")
 		div.navbar.navbar-fixed-top
