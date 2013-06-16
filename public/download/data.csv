@@ -5,20 +5,20 @@
 "Private Citizen","2013-05-15T14:56:25.120Z",false,false,false,["33.75688594085081,-84.53224182128906"],null
 "Private Citizen","2013-05-15T14:57:07.387Z",false,false,false,["33.81908916394128,-84.13467407226562"],null
 "Private Citizen","2013-05-15T14:57:15.594Z",false,false,false,["33.9108846047302,-84.23286437988281"],null
-"Private Citizen","2013-06-10T17:51:56.960Z",false,false,false,["33.751141278222576,-84.23552513122559"],"defe9ff4bffcfba73f56175727376b23.jpg"
+"Private Citizen","2013-06-10T17:51:56.960Z",false,false,false,["33.751141278222576,-84.23552513122559"],https://s3.amazonaws.com/gapp-map/"defe9ff4bffcfba73f56175727376b23.jpg""defe9ff4bffcfba73f56175727376b23.jpg"
 "Business","2013-06-10T17:53:09.842Z",true,true,false,["33.75253287778851,-84.21926021575928"],null
 "Private Citizen","2013-06-11T18:55:54.845Z",true,true,false,["33.73558237121465,-84.37139511108397"],null
 "Private Citizen","2013-06-11T19:16:48.417Z",false,false,false,["33.73568943755719,-84.36821937561035"],null
 "Private Citizen","2013-06-11T19:45:40.510Z",true,false,false,["33.749285777002164,-84.2290449142456"],null
 "Private Citizen","2013-06-11T19:57:23.708Z",true,true,true,["33.75770657551834,-84.25239086151122"],null
-"Private Citizen","2013-06-11T21:57:38.846Z",false,false,false,["33.77572287842558,-84.33517456054688"],"9695c47b402663887142bcbb64ddbbde.jpg"
-"Private Citizen","2013-06-11T22:18:43.199Z",false,false,false,["33.84874817060767,-84.46083068847656"],"4a62c60879a08162d0b51d86af93b93c.jpg"
-"Private Citizen","2013-06-11T22:19:57.666Z",false,false,false,["33.85159945579106,-84.36676025390625"],"f6cb22409ef9a0388a19992eb74e3ef6.jpg"
-"Private Citizen","2013-06-11T22:23:37.355Z",false,false,false,["33.816236794088205,-84.27955627441406"],"b66c26977935245b68bd453255297d5d.jpg"
-"Private Citizen","2013-06-11T22:25:53.543Z",false,false,false,["33.83848275599514,-84.25140380859374"],"0e0473032b6ae5b460c6e62d661ac374.jpg"
-"Private Citizen","2013-06-11T22:26:45.812Z",false,false,false,["33.68092541950744,-84.44194793701172"],"e77b31699953a87a69d82911c7061368.jpg"
-"Private Citizen","2013-06-11T22:29:29.104Z",false,false,false,["33.89435731090067,-84.14085388183594"],"13319ee03cd0c6d3bd0ccff78ff9c861.jpg"
-"Private Citizen","2013-06-11T22:31:43.784Z",false,false,false,["33.764877874596394,-84.46495056152344"],"2fdef4e720e4079d2a4a314614b02ecb.jpg"
+"Private Citizen","2013-06-11T21:57:38.846Z",false,false,false,["33.77572287842558,-84.33517456054688"],https://s3.amazonaws.com/gapp-map/"9695c47b402663887142bcbb64ddbbde.jpg""9695c47b402663887142bcbb64ddbbde.jpg"
+"Private Citizen","2013-06-11T22:18:43.199Z",false,false,false,["33.84874817060767,-84.46083068847656"],https://s3.amazonaws.com/gapp-map/"4a62c60879a08162d0b51d86af93b93c.jpg""4a62c60879a08162d0b51d86af93b93c.jpg"
+"Private Citizen","2013-06-11T22:19:57.666Z",false,false,false,["33.85159945579106,-84.36676025390625"],https://s3.amazonaws.com/gapp-map/"f6cb22409ef9a0388a19992eb74e3ef6.jpg""f6cb22409ef9a0388a19992eb74e3ef6.jpg"
+"Private Citizen","2013-06-11T22:23:37.355Z",false,false,false,["33.816236794088205,-84.27955627441406"],https://s3.amazonaws.com/gapp-map/"b66c26977935245b68bd453255297d5d.jpg""b66c26977935245b68bd453255297d5d.jpg"
+"Private Citizen","2013-06-11T22:25:53.543Z",false,false,false,["33.83848275599514,-84.25140380859374"],https://s3.amazonaws.com/gapp-map/"0e0473032b6ae5b460c6e62d661ac374.jpg""0e0473032b6ae5b460c6e62d661ac374.jpg"
+"Private Citizen","2013-06-11T22:26:45.812Z",false,false,false,["33.68092541950744,-84.44194793701172"],https://s3.amazonaws.com/gapp-map/"e77b31699953a87a69d82911c7061368.jpg""e77b31699953a87a69d82911c7061368.jpg"
+"Private Citizen","2013-06-11T22:29:29.104Z",false,false,false,["33.89435731090067,-84.14085388183594"],https://s3.amazonaws.com/gapp-map/"13319ee03cd0c6d3bd0ccff78ff9c861.jpg""13319ee03cd0c6d3bd0ccff78ff9c861.jpg"
+"Private Citizen","2013-06-11T22:31:43.784Z",false,false,false,["33.764877874596394,-84.46495056152344"],https://s3.amazonaws.com/gapp-map/"2fdef4e720e4079d2a4a314614b02ecb.jpg""2fdef4e720e4079d2a4a314614b02ecb.jpg"
 "Private Citizen","2013-06-11T22:47:43.469Z",false,false,false,["33.88466740785103,-84.07493591308594"],null
 "Private Citizen","2013-06-12T01:58:44.788Z",false,false,false,["33.78371305547283,-84.09759521484375"],null
 "Private Citizen","2013-06-12T01:59:20.863Z",false,false,false,["33.78371305547283,-84.09759521484375"],null
@@ -58,3 +58,4 @@
 "Private Citizen","2013-06-16T13:39:34.773Z",false,false,false,["33.81053176901896,-84.45533752441406"],null
 "Private Citizen","2013-06-16T13:43:58.117Z",false,false,false,["33.87839688404627,-84.53979492187499"],null
 "Private Citizen","2013-06-16T13:45:46.685Z",false,false,false,["33.863573814253485,-84.40315246582031"],null
+"Private Citizen","2013-06-16T13:46:42.935Z",false,false,false,["33.86699475113557,-84.66064453125"],null
