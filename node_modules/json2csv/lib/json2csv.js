@@ -88,6 +88,11 @@ var createColumnContent = function(params, str, callback) {
       if (line !== '') {
         line += del;
       }
+      if (field_element == 'image'){
+        if (data_element[field_element] != null){
+          line += 'https://s3.amazonaws.com/gapp-map/' + JSON.stringify(data_element[field_element]);
+        }
+      }
       line += JSON.stringify(data_element[field_element]);
     });
     line = line.replace(/\\"/g, '""');
