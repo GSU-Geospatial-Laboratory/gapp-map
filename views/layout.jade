@@ -8,9 +8,8 @@ html(ng-app="myApp")
 		link(rel='stylesheet', href='/css/bootstrap-responsive.min.css')
 		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css')
 		link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css')
-		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css" />
-		<![endif]-->
+		//[if lte IE 8]
+			link(rel="stylesheet",href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.ie.css")
 		link(rel='stylesheet', href='/css/app.css')
 
 	body(ng-controller="MapCtrl")
@@ -39,61 +38,6 @@ html(ng-app="myApp")
 		script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js')
-		script(src='js/lib/angular/ngUpload.min.js')
-		script(src='js/lib/angular/ui-bootstrap-0.3.0.min.js')
-		script(src='js/app.js')
-		script(src='js/services.js')
-		script(src='js/controllers.js')
-		script(src='js/filters.js')
-		script(src='js/directives.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/leaflet/0.5.1/leaflet.js')
-
-		script.
-			var map;
-			var allMarkers=[];
-			var addLatlng = [];
-			var gsuLocation = [33.75317514689363, -84.38607215881348]
-			map = L.map('map').setView(gsuLocation, 11);
-			var cmk = "315bfb243f9f4e8fb6adc193a7367eeb"
-			L.tileLayer('http://c.tiles.mapbox.com/v3/examples.map-vyofok3q/{z}/{x}/{y}.png', {
-			attribution: 'Map data &copy; 2011 OpenStreetMap contributors',
-			key: cmk
-			}).addTo(map);
-			var g0Icon = L.icon({
-				iconUrl: 'images/g0.png',
-				// shadowUrl: 'leaf-shadow.png',
-				iconSize: [25, 40], // size of the icon
-				//shadowSize:   [50, 64], // size of the shadow
-				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
-				//shadowAnchor: [4, 62],  // the same for the shadow
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-			var g1Icon = L.icon({
-				iconUrl: 'images/g1.png',
-				// shadowUrl: 'leaf-shadow.png',
-				iconSize: [25, 40], // size of the icon
-				//shadowSize:   [50, 64], // size of the shadow
-				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
-				//shadowAnchor: [4, 62],  // the same for the shadow
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-			var g2Icon = L.icon({
-				iconUrl: 'images/g2.png',
-				// shadowUrl: 'leaf-shadow.png',
-				iconSize: [25, 40], // size of the icon
-				//shadowSize:   [50, 64], // size of the shadow
-				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
-				//shadowAnchor: [4, 62],  // the same for the shadow
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-			var g3Icon = L.icon({
-				iconUrl: 'images/g3.png',
-				// shadowUrl: 'leaf-shadow.png',
-				iconSize: [25, 40], // size of the icon
-				//shadowSize:   [50, 64], // size of the shadow
-				iconAnchor: [12, 40], // point of the icon which will correspond to marker's location
-				//shadowAnchor: [4, 62],  // the same for the shadow
-				popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
-			});
-
+		script(src='js/app.min.js')
 			

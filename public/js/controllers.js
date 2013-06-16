@@ -231,6 +231,11 @@ function GardenCtrl($scope, $http, $location, $route, $routeParams) {
 
 	$scope.open()
 }
+MapCtrl.$inject = ['$scope','$http', '$location'];
+AboutCtrl.$inject = ['$scope','$http', '$location'];
+AppCtrl.$inject = ['$scope', '$http'];
+PlaceCtrl.$inject = ['$scope','$http', '$location'];
+GardenCtrl.$inject = ['$scope','$http', '$location', '$route', '$routeParams'];
 
 
 function MyCtrl1() {}
