@@ -4,7 +4,7 @@ var gm = require('gm'),
 		imageMagick: true
 	});
 
-var json2csv = require('json2csv');
+var json2csv = require('json2csv-customgapp');
 var async = require('async');
 
 var fmt = require('fmt');
