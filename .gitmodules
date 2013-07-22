@@ -1,4 +1,1 @@
 
-[submodule "public/js/esri-leaflet"]
-	path = public/js/esri-leaflet
-	url = https://github.com/Esri/esri-leaflet.git
