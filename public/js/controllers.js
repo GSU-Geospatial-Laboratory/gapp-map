@@ -57,11 +57,13 @@ function MapCtrl($scope, $http, $location) {
 							break;
 						case 2:
 							currentIcon = g3Icon;
+							currentIcon.iconSize = [16,16]
 							break;
 						case 3:
 							currentIcon = g3Icon;
 							break;
 					}
+					console.log(currentIcon)
 					var latlngs = val.loc[0].split(',')
 					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
 					allMarkers.push(L.marker(latLng, {
