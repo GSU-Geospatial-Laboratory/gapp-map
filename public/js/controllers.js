@@ -53,10 +53,10 @@ function MapCtrl($scope, $http, $location) {
 							currentIcon = g0Icon;
 							break;
 						case 1:
-							currentIcon = g2Icon;
+							currentIcon = g1Icon;
 							break;
 						case 2:
-							currentIcon = g3Icon;
+							currentIcon = g2Icon;
 							currentIcon.iconSize = [16,16]
 							break;
 						case 3:
