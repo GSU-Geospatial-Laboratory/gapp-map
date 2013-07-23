@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 /* Controllers */
 
 function MapCtrl($scope, $http, $location) {
@@ -26,11 +24,10 @@ function MapCtrl($scope, $http, $location) {
 	$scope.allGardens
 
 	$scope.sendToGarden = function(e, garden) {
-		//console.log(e, garden)
 		map.panTo(e.target._latlng)
 		map.setView(e.target._latlng, 15)
 		$scope.$apply(function() {
-			$location.path('/garden' + garden);
+			$location.path('/garden/' + garden);
 		});
 	}
 	var value = ''
@@ -57,13 +54,11 @@ function MapCtrl($scope, $http, $location) {
 							break;
 						case 2:
 							currentIcon = g2Icon;
-							currentIcon.iconSize = [16,16]
 							break;
 						case 3:
 							currentIcon = g3Icon;
 							break;
 					}
-					console.log(currentIcon)
 					var latlngs = val.loc[0].split(',')
 					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
 					allMarkers.push(L.marker(latLng, {
@@ -127,10 +122,6 @@ function PlaceCtrl($scope, $http, $location) {
 
 
 	$scope.loc = addLatlng
-	//console.log($scope.loc)
-	//var latLng = map.getCenter()
-	//$scope.loc = [latLng.lat, latLng.lng]
-	//console.log($scope.loc)
 
 	$scope.open = function() {
 		$scope.shouldBeOpen = true;
@@ -166,29 +157,24 @@ function PlaceCtrl($scope, $http, $location) {
 
 	$scope.type = 'Private Citizen'
 
-	$scope.results = function(content, completed) {
-		if (completed && content.length > 0) console.log(content); // process content
-		else {
-			// 1. ignore content and adjust your model to show/hide UI snippets; or
-			// 2. show content as an _operation progress_ information
-		}
-	}
+	// $scope.results = function(content, completed) {
+	// 	if (completed && content.length > 0) console.log(content); // process content
+	// 	else {
+	// 		// 1. ignore content and adjust your model to show/hide UI snippets; or
+	// 		// 2. show content as an _operation progress_ information
+	// 	}
+	// }
 
 	$scope.closeModal = function() {
 		$location.path('/');
 	}
 
 	$scope.uploadComplete = function(content, completed) {
-		//console.log(content, completed)
-		//console.log('yup')
 		if (completed && content.length > 0) {
 			$scope.response = JSON.parse(content);
 			if ($scope.response.url == 'not an image') {
 				return;
 			} else {
-				//	console.log('content: ' + content)
-				// Presumed content is a json string!
-				//	console.log($scope.response.url)
 				$scope.close()
 				$scope.getMarkers()
 			}
@@ -199,7 +185,6 @@ function PlaceCtrl($scope, $http, $location) {
 function GardenCtrl($scope, $http, $location, $route, $routeParams) {
 	$scope.id = $routeParams.id
 	$scope.fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + $location.absUrl()
-	//console.log($scope.allGardens)
 
 	$scope.open = function() {
 		$scope.shouldBeOpen = true;
@@ -233,6 +218,7 @@ function GardenCtrl($scope, $http, $location, $route, $routeParams) {
 
 	$scope.open()
 }
+
 MapCtrl.$inject = ['$scope','$http', '$location'];
 AboutCtrl.$inject = ['$scope','$http', '$location'];
 AppCtrl.$inject = ['$scope', '$http'];

@@ -4,7 +4,7 @@ div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="o
 			i.icon-remove-circle
 		h3 Pollinator Garden
 	div.modal-body
-		h5 This garden was added by a {{thisGarden.type | lowercase}}
+		h5 This garden was added by a {{thisGarden.type | lowercase}} and is located at a {{thisGarden.where | lowercase}}
 		p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
 		p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
 		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden

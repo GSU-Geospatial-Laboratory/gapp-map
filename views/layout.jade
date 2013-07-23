@@ -24,11 +24,9 @@ html(ng-app="myApp")
 						button.btn.btn-primary(ng-click='goAbout()')<i class='icon-info-sign icon-large'></i><span class='hidden-phone'> About<span>
 						|	&nbsp;
 						button.btn.btn-primary(ng-click='downloadData()')<i class='icon-cloud-download icon-large'></i><span class='hidden-phone'> Download the data<span>
-
-					//- div.nav-collapse.collapse
 							
-		#map-container
-			#map
+		div#map-container
+			div#map
 		block body
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
 		script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')
@@ -36,5 +34,4 @@ html(ng-app="myApp")
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.2/leaflet.js')
 		script(src='/js/esri-leaflet.min.js')
-		script(src='js/app.min.js')
-			
+		script(src='/js/app.min.js')

@@ -10,5 +10,10 @@ div(ng-controller='AboutCtrl',modal="shouldBeOpen", close="close()", options="op
 		p This mapping project is a collaboration between the <a href="http://www.atlantabotanicalgarden.org/">Atlanta Botanical Garden</a> and the Georgia State University <a href="http://geosciences.gsu.edu">Department of Geosciences</a>.
 		p
 			a(ng-click='downloadData()') Download the Atlanta pollinator data set
+		p
+			a(href='http://www.atlantabotanicalgarden.org/')
+				img(src='/images/abg_logo.gif')
+			a(href='http://geospatial.gsu.edu')
+				img(src='/images/geospatiallab_logo.png')
+	//- div.modal-footer
 
-	div.modal-footer

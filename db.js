@@ -29,6 +29,9 @@ var placeSchema = new Schema({
 	type: {
 		type: String,
 	},
+	where: {
+		type: String,
+	},
 	dateCreated: {
 		type: Date,
 	},

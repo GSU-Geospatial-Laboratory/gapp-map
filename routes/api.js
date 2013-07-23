@@ -119,6 +119,7 @@ function saveItem(req, fileName) {
 
 		var place = new db.Place({
 			type: req.param('type'),
+			where: req.param('where'),
 			status: true,
 			image: fileName,
 			dateCreated: currentTime,

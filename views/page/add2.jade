@@ -11,8 +11,16 @@ div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="op
 				select(name='type', ng-model='type')
 					option(value='Private Citizen') Private Citizen
 					option(value='Nonprofit Organization') Nonprofit Organization
-					option(value='School') School
+					option(value='Students(s)') Student(s)
 					option(value='Business') Business
+					option(value='Government Employee(s)') Government Employee(s)
+			label Where is the garden located? <br>
+				select(name='where', ng-model='where')
+					option(value='Private Residence') Private Residence
+					option(value='School/University') School/University
+					option(value='Nonprofit Organization') Nonprofit Organization
+					option(value='Business') Business
+					option(value='Government') Government 
 			label(class='checkbox')
 				input(type='checkbox', name='habitat', ng-model='habitat')span Do you provide a habitat for pollinators?
 			label(class='checkbox')
