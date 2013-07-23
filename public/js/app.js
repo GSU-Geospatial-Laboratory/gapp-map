@@ -23,5 +23,4 @@ config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({
 		redirectTo: '/'
 	});
-	// $locationProvider.html5Mode(true);
 }]);

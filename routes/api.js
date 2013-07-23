@@ -41,8 +41,8 @@ function updateData() {
 		// console.log(result)
 		json2csv({
 			data: result,
-			fields: ['type', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'loc', 'image'],
-			fieldNames: ['Type of Garden', 'Date Added', 'Provides pollinator habitat', 'Provides pollinator food source', 'Does not use pesticides', 'Latitude, Longitude', "Link to Image"]
+			fields: ['type', 'where', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'image', 'loc'],
+			fieldNames: ['Type of Garden', 'Where is the garden', 'Date Added', 'Provides pollinator habitat', 'Provides pollinator food source', 'Does not use pesticides', 'Latitude, Longitude', "Link to Image"]
 		}, function(err, csv) {
 			if (err) console.log(err);
 			fs.writeFile("public/download/data.csv", csv, function(err) {
@@ -115,7 +115,6 @@ function isOn(val) {
 function saveItem(req, fileName) {
 	if (req.body) {
 		var currentTime = new Date();
-		//console.log(req.body)
 
 		var place = new db.Place({
 			type: req.param('type'),
@@ -129,7 +128,13 @@ function saveItem(req, fileName) {
 			noPesticides: isOn(req.param('noPesticides')),
 			loc: req.param('loc')
 		})
-		place.save(function(err) {})
+		place.save(function(err) {
+			if (err) {
+				console.log(err)
+			}else{
+				updateData();
+			}
+		})
 	} else {
 		db.Place.update({
 			_id: req.body.data.id
@@ -182,7 +187,7 @@ exports.addPlace = function(req, res) {
 	}
 	if (fileName != 'not an image') {
 		saveItem(req, fileName);
-		updateData();
+
 		//console.log(data)
 	}
 

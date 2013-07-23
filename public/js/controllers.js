@@ -156,14 +156,7 @@ function PlaceCtrl($scope, $http, $location) {
 
 
 	$scope.type = 'Private Citizen'
-
-	// $scope.results = function(content, completed) {
-	// 	if (completed && content.length > 0) console.log(content); // process content
-	// 	else {
-	// 		// 1. ignore content and adjust your model to show/hide UI snippets; or
-	// 		// 2. show content as an _operation progress_ information
-	// 	}
-	// }
+	$scope.where = 'Private Residence'
 
 	$scope.closeModal = function() {
 		$location.path('/');
@@ -224,11 +217,3 @@ AboutCtrl.$inject = ['$scope','$http', '$location'];
 AppCtrl.$inject = ['$scope', '$http'];
 PlaceCtrl.$inject = ['$scope','$http', '$location'];
 GardenCtrl.$inject = ['$scope','$http', '$location', '$route', '$routeParams'];
-
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {}
-MyCtrl2.$inject = [];
