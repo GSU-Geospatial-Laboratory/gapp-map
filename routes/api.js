@@ -38,7 +38,7 @@ function updateData() {
 	db.Place.find({
 		status: true
 	}).exec(function(err, result) {
-		console.log(result)
+		// console.log(result)
 		json2csv({
 			data: result,
 			fields: ['type', 'where', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'image', 'loc'],
