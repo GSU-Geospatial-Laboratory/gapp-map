@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       // }//,
       my_target: {
         files: {
-          'public/js/app.min.js': ['public/js/lib/angular/ngUpload.min.js', 'public/js/lib/angular/ui-bootstrap-0.3.0.min.js', 'public/js/app.js', 'public/js/services.js', 'public/js/controllers.js','public/js/filters.js', 'public/js/directives.js','public/js/L.Control.Locate.js', 'public/js/map.js']
+          'public/js/app.min.js': ['sub_modules/ngUpload/ng-upload.js', 'public/js/lib/angular/ui-bootstrap-0.3.0.min.js', 'public/js/app.js', 'public/js/services.js', 'public/js/controllers.js','public/js/filters.js', 'public/js/directives.js','public/js/L.Control.Locate.js', 'public/js/map.js']
         }
       }
     },

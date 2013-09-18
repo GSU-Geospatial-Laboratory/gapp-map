@@ -163,14 +163,17 @@ function PlaceCtrl($scope, $http, $location) {
 	}
 
 	$scope.uploadComplete = function(content, completed) {
-		if (completed && content.length > 0) {
-			$scope.response = JSON.parse(content);
-			if ($scope.response.url == 'not an image') {
-				return;
-			} else {
-				$scope.close()
-				$scope.getMarkers()
-			}
+		console.log(content, completed)
+		if (completed) {
+			// $scope.response = JSON.parse(content);
+			// if ($scope.response.url == 'not an image') {
+			// 	return;
+			// } else {
+			// 	$scope.close()
+			// 	$scope.getMarkers()
+			// }
+			$scope.close();
+			$scope.getMarkers();
 		}
 	};
 }
