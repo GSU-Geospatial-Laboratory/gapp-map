@@ -35,6 +35,7 @@ function MapCtrl($scope, $http, $location) {
 	$scope.getMarkers = function() {
 
 		$.getJSON('/api/place', function(data) {
+			console.log(data)
 			$scope.allGardens = data.data
 			$.each(data.data, function(i, val) {
 				if (val.loc[0] == undefined) {
@@ -59,7 +60,7 @@ function MapCtrl($scope, $http, $location) {
 							currentIcon = g3Icon;
 							break;
 					}
-					var latlngs = val.loc[0].split(',')
+					var latlngs = val.loc
 					var latLng = new L.LatLng(parseFloat(latlngs[0]), parseFloat(latlngs[1]))
 					allMarkers.push(L.marker(latLng, {
 						icon: currentIcon

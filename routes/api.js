@@ -38,7 +38,7 @@ function updateData() {
 	db.Place.find({
 		status: true
 	}).exec(function(err, result) {
-		console.log(result)
+		// console.log(result)
 		json2csv({
 			data: result,
 			fields: ['type', 'where', 'dateCreated', 'habitat', 'foodSource', 'noPesticides', 'image', 'loc'],
@@ -57,7 +57,7 @@ function updateData() {
 }
 
 function uploadItem(item, req) {
-	console.log(item)
+	// console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
 	//console.log('filename: ' + fileName)
 
@@ -113,7 +113,8 @@ function isOn(val) {
 }
 
 function saveItem(req, fileName) {
-	console.log(req.param('loc'))
+	console.log(typeof req.param('loc'))
+	console.log(req.param('loc').split(','))
 	if (req.body) {
 		var currentTime = new Date();
 
@@ -127,7 +128,7 @@ function saveItem(req, fileName) {
 			habitat: isOn(req.param('habitat')),
 			foodSource: isOn(req.param('foodSource')),
 			noPesticides: isOn(req.param('noPesticides')),
-			loc: req.param('loc')
+			loc: req.param('loc').split(',')
 		})
 		place.save(function(err) {
 			if (err) {
