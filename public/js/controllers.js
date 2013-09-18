@@ -113,6 +113,8 @@ function AppCtrl($scope, $http) {
 }
 
 function PlaceCtrl($scope, $http, $location) {
+	$scope.needABetterBrowser = false;
+
 	var version = navigator.userAgent.match(/(msie) (\d+)/i);
 			if (version != null){
 				console.log(version)
