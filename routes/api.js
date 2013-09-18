@@ -113,6 +113,7 @@ function isOn(val) {
 }
 
 function saveItem(req, fileName) {
+	console.log(req.param('loc'))
 	if (req.body) {
 		var currentTime = new Date();
 
