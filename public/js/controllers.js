@@ -35,7 +35,7 @@ function MapCtrl($scope, $http, $location) {
 	$scope.getMarkers = function() {
 
 		$.getJSON('/api/place', function(data) {
-			console.log(data)
+			// console.log(data)
 			$scope.allGardens = data.data
 			$.each(data.data, function(i, val) {
 				if (val.loc[0] == undefined) {
@@ -164,7 +164,7 @@ function PlaceCtrl($scope, $http, $location) {
 	}
 
 	$scope.uploadComplete = function(content, completed) {
-		console.log(content, completed)
+		// console.log(content, completed)
 		if (completed) {
 			// $scope.response = JSON.parse(content);
 			// if ($scope.response.url == 'not an image') {
