@@ -164,7 +164,7 @@ function PlaceCtrl($scope, $http, $location) {
 	}
 
 	$scope.uploadComplete = function(content, completed) {
-		// console.log(content, completed)
+		console.log(content, completed)
 		if (completed) {
 			// $scope.response = JSON.parse(content);
 			// if ($scope.response.url == 'not an image') {
