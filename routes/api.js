@@ -189,8 +189,6 @@ exports.addPlace = function(req, res) {
 	}
 	if (fileName != 'not an image') {
 		saveItem(req, fileName);
-
-		console.log(data)
 	}
 
 	res.send(JSON.stringify(responseObj));
