@@ -33,8 +33,8 @@ div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="op
 					input(type='file', name='file', ng-model='file')
 				div(ng-show="response.url == 'not an image'").alert
 					p Hmm... the file you selected doesn't appear to be an image, please try again
-				label.pull-right
-					input(type='submit', value='Submit', class='btn btn-success', upload-submit="uploadComplete(content, completed)")
-					span &nbsp;
-					a.btn.btn-warning.cancel(href='#', ng-click='close()') Cancel		
+			label.pull-right
+				input(type='submit', value='Submit', class='btn btn-success', upload-submit="uploadComplete(content, completed)")
+				span &nbsp;
+				a.btn.btn-warning.cancel(href='#', ng-click='close()') Cancel		
 			
