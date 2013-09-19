@@ -161,7 +161,9 @@ function PlaceCtrl($scope, $http, $location) {
 
 	$scope.opts = {
 		backdropFade: true,
-		dialogFade: true
+		dialogFade: true,
+		windowClass: 'modal-scrollable'
+		
 	};
 
 	$scope.open()

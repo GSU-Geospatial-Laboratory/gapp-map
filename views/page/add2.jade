@@ -2,9 +2,9 @@ div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="op
 	div.modal-header
 		button(type="button", class="close", ng-click="close()")
 			i.icon-remove-circle
-		h3 Add a pollinator garden (step 2)
+		h3 Add a garden (2/2)
 	div.modal-body
-		p Provide some details about the pollinator garden
+		//- p Provide some details about the pollinator garden
 		form(ng-upload, action="/api/place", method="POST", enctype="multipart/form-data", encoding="multipart/form-data")
 			input(type='text', ng-model='loc', name='loc', ng-show='map!=null')
 			label Who created the garden? <br>
@@ -21,12 +21,13 @@ div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="op
 					option(value='Nonprofit Organization') Nonprofit Organization
 					option(value='Business') Business
 					option(value='Government') Government 
+			label Does this garden...
 			label(class='checkbox')
-				input(type='checkbox', name='habitat', ng-model='habitat')span Do you provide a habitat for pollinators?
+				input(type='checkbox', name='habitat', ng-model='habitat')span Provide a habitat for pollinators?
 			label(class='checkbox')
-				input(type='checkbox', name='foodSource', ng-model='foodSource')span Do you provide a food source for pollinators?
+				input(type='checkbox', name='foodSource', ng-model='foodSource')span Provide a food source for pollinators?
 			label(class='checkbox')
-				input(type='checkbox', name='noPesticides', ng-model='noPesticides')span Do you provide a pesticide free garden?			
+				input(type='checkbox', name='noPesticides', ng-model='noPesticides')span Provide a pesticide free garden?			
 			<br>
 			div(ng-show='!needABetterBrowser')
 				label(class='file') Upload a picture of your garden <br><br>

@@ -1,6 +1,14 @@
-var map;
-var allMarkers = [];
-var addLatlng = [];
+window.addEventListener("load",function() {
+	// Set a timeout...
+	setTimeout(function(){
+		// Hide the address bar!
+		window.scrollTo(0, 1);
+	}, 0);
+});
+
+var map, 
+	allMarkers = [],
+	addLatlng = [];
 var gsuLocation = [33.75317514689363, -84.38607215881348]
 map = L.map('map').setView(gsuLocation, 11);
 L.control.locate().addTo(map);
