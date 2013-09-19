@@ -57,10 +57,7 @@ function updateData() {
 }
 
 function uploadItem(item, req) {
-	// console.log(item)
 	var fileName = item.path.substring(5) + '.jpg'
-	//console.log('filename: ' + fileName)
-
 	fs.stat(item.path, function(err, file_info) {
 		if (err) {
 			console.log(err, 'Error reading file');
@@ -113,9 +110,7 @@ function isOn(val) {
 }
 
 function saveItem(req, fileName) {
-	console.log(typeof req.param('loc'))
-	console.log(req.param('loc').split(','))
-	if (req.body) {
+	if (req.body && req.param('loc').length > 0) {
 		var currentTime = new Date();
 
 		var place = new db.Place({

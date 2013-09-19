@@ -1,41 +1,45 @@
-div(ng-controller='PlaceCtrl',modal="shouldBeOpen", close="close()", options="opts")
-	div.modal-header
-		button(type="button", class="close", ng-click="close()")
-			i.icon-remove-circle
-		h3 Add a garden (2/2)
-	div.modal-body
-		//- p Provide some details about the pollinator garden
-		form(ng-upload, action="/api/place", method="POST", enctype="multipart/form-data", encoding="multipart/form-data")
-			input(type='text', ng-model='loc', name='loc', ng-show='map!=null')
-			label Who created the garden? <br>
-				select(name='type', ng-model='type')
-					option(value='Private Citizen') Private Citizen
-					option(value='Nonprofit Organization') Nonprofit Organization
-					option(value='Students(s)') Student(s)
-					option(value='Business') Business
-					option(value='Government Employee(s)') Government Employee(s)
-			label Where is the garden located? <br>
-				select(name='where', ng-model='where')
-					option(value='Private Residence') Private Residence
-					option(value='School/University') School/University
-					option(value='Nonprofit Organization') Nonprofit Organization
-					option(value='Business') Business
-					option(value='Government') Government 
-			label Does this garden...
-			label(class='checkbox')
-				input(type='checkbox', name='habitat', ng-model='habitat')span Provide a habitat for pollinators?
-			label(class='checkbox')
-				input(type='checkbox', name='foodSource', ng-model='foodSource')span Provide a food source for pollinators?
-			label(class='checkbox')
-				input(type='checkbox', name='noPesticides', ng-model='noPesticides')span Provide a pesticide free garden?			
-			<br>
-			div(ng-show='!needABetterBrowser')
-				label(class='file') Upload a picture of your garden <br><br>
-					input(type='file', name='file', ng-model='file')
-				div(ng-show="response.url == 'not an image'").alert
-					p Hmm... the file you selected doesn't appear to be an image, please try again
-			label.pull-right
-				input(type='submit', value='Submit', class='btn btn-success', upload-submit="uploadComplete(content, completed)")
-				span &nbsp;
-				a.btn.btn-warning.cancel(href='#', ng-click='close()') Cancel		
-			
+div(ng-controller='PlaceCtrl', tabindex="-1", role="dialog", aria-hidden="true").modal.fade#add2Modal
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+				h4 Add a garden (2/2)
+			div.modal-body
+				//- p Provide some details about the pollinator garden
+				form(ng-upload, action="/api/place", method="POST", enctype="multipart/form-data", encoding="multipart/form-data")
+					input(type='text', ng-model='loc', name='loc', ng-show='map!=null')
+					div.form-group
+						label Who created the garden? <br>
+							select(name='type', ng-model='type')
+								option(value='Private Citizen') Private Citizen
+								option(value='Nonprofit Organization') Nonprofit Organization
+								option(value='Students(s)') Student(s)
+								option(value='Business') Business
+								option(value='Government Employee(s)') Government Employee(s)
+					div.form-group
+						label Where is the garden located? <br>
+							select(name='where', ng-model='where')
+								option(value='Private Residence') Private Residence
+								option(value='School/University') School/University
+								option(value='Nonprofit Organization') Nonprofit Organization
+								option(value='Business') Business
+								option(value='Government') Government 
+					div.form-group
+						label Does this garden...
+						label(class='checkbox')
+							input(type='checkbox', name='habitat', ng-model='habitat')span Provide a habitat for pollinators?
+						label(class='checkbox')
+							input(type='checkbox', name='foodSource', ng-model='foodSource')span Provide a food source for pollinators?
+						label(class='checkbox')
+							input(type='checkbox', name='noPesticides', ng-model='noPesticides')span Provide a pesticide free garden?			
+					div(ng-show='!needABetterBrowser')
+						label(class='file') Upload a picture of your garden <br><br>
+							input(type='file', name='file', ng-model='file')
+						div(ng-show="response.url == 'not an image'").alert
+							p Hmm... the file you selected doesn't appear to be an image, please try again
+					div.form-group.submit-form-box
+						input(type='submit', value='Submit', class='btn btn-success', upload-submit="uploadComplete(content, completed)")
+						span &nbsp;
+						//- a.btn.btn-warning.cancel(href='#', ng-click='close()') Cancel
+
+					

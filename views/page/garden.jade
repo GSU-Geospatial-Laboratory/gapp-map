@@ -1,21 +1,22 @@
-div(ng-controller='GardenCtrl',modal="shouldBeOpen", close="close()", options="opts")
-	div.modal-header
-		button(type="button", class="close", ng-click="close()")
-			i.icon-remove-circle
-		h3 Pollinator Garden
-	div.modal-body
-		h5 This garden was added by a {{thisGarden.type | lowercase}} and is located at a {{thisGarden.where | lowercase}}
-		p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
-		p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
-		p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
-		img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
-		<br>
-		
-	div.modal-footer
-		span.pull-left
-			a(href='{{fbUrl}}', target="_blank").btn
-				i.icon-facebook-sign.icon-large
-			| &nbsp;
-			a(href="https://twitter.com/share", target='_blank').btn
-				i.icon-twitter-sign.icon-large
-		span Submitted on {{thisGarden.dateCreated | date:'shortDate'}}
+div(ng-controller='GardenCtrl', tabindex="-1", role="dialog", aria-hidden="true").modal.fade#gardenModal
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+				h4 Pollinator Garden
+			div.modal-body
+				h5 This garden was added by a {{thisGarden.type | lowercase}} and is located at a {{thisGarden.where | lowercase}}
+				p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
+				p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
+				p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
+				img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
+				<br>
+				
+			div.modal-footer
+				span.pull-left
+					a(href='{{fbUrl}}', target="_blank").btn
+						i.icon-facebook-sign.icon-large
+					| &nbsp;
+					a(href="https://twitter.com/share", target='_blank').btn
+						i.icon-twitter-sign.icon-large
+				span Submitted on {{thisGarden.dateCreated | date:'shortDate'}}

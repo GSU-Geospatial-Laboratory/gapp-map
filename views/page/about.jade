@@ -1,19 +1,18 @@
-div(ng-controller='AboutCtrl',modal="shouldBeOpen", close="close()", options="opts")
-	div.modal-header
-		button(type="button", class="close", ng-click="close()")
-			i.icon-remove-circle
-		h3 About the project
-	div.modal-body
-		p The Greater Atlanta Pollinator Partnership (GAPP) is a collaboration between program partners and communities within metro Atlanta to <a href="http://gapp.org/building-your-pollinator-garden/your-pollinator-garden/">develop pollinator-friendly habitats</a> for butterflies, bees, bumble bees, moths, other beneficial insects, and hummingbirds.
-		p This map allows GAPP to collect information about pollinator gardens in the Greater Atlanta area.
-		p For more information about GAPP, please visit our <a href="http://www.gapp.org">homepage</a>.
-		p This mapping project is a collaboration between the <a href="http://www.atlantabotanicalgarden.org/">Atlanta Botanical Garden</a> and the Georgia State University <a href="http://geosciences.gsu.edu">Department of Geosciences</a>.
-		p
-			a(ng-click='downloadData()') Download the Atlanta pollinator data set
-		p
-			a(href='http://www.atlantabotanicalgarden.org/')
-				img(src='/images/abg_logo.gif')
-			a(href='http://geospatial.gsu.edu').pull-right
-				img(src='/images/geospatiallab_logo.png')
-	//- div.modal-footer
-
+div(ng-controller='AboutCtrl', tabindex="-1", role="dialog", aria-hidden="true").modal.fade#aboutModal
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+				h4 About the project
+			div.modal-body
+				p The Greater Atlanta Pollinator Partnership (GAPP) is a collaboration between program partners and communities within metro Atlanta to <a href="http://gapp.org/building-your-pollinator-garden/your-pollinator-garden/">develop pollinator-friendly habitats</a> for butterflies, bees, bumble bees, moths, other beneficial insects, and hummingbirds.
+				p This map allows GAPP to collect information about pollinator gardens in the Greater Atlanta area.
+				p For more information about GAPP, please visit our <a href="http://www.gapp.org">homepage</a>.
+				p This mapping project is a collaboration between the <a href="http://www.atlantabotanicalgarden.org/">Atlanta Botanical Garden</a> and the Georgia State University <a href="http://geosciences.gsu.edu">Department of Geosciences</a>.
+				p
+					a(ng-click='downloadData()') Download the Atlanta pollinator data set
+				p
+					a(href='http://www.atlantabotanicalgarden.org/')
+						img(src='/images/abg_logo.gif')
+					a(href='http://geospatial.gsu.edu').pull-right
+						img(src='/images/geospatiallab_logo.png')

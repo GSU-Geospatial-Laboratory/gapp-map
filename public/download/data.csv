@@ -1,10 +1,3 @@
 "Type of Garden","Where is the garden","Date Added","Provides pollinator habitat","Provides pollinator food source","Does not use pesticides","Latitude, Longitude","Link to Image"
-"Private Citizen","Private Residence","2013-09-18T18:19:03.926Z",false,false,false,,["33.85502087238565","-84.38804626464844"]
-"Private Citizen","Private Residence","2013-09-18T18:25:56.411Z",false,false,false,,["33.95247360616282","-84.39834594726562"]
-"Private Citizen","Private Residence","2013-09-18T18:26:09.716Z",false,false,false,,["33.7613101391079","-84.37311172485352"]
-"Private Citizen","Private Residence","2013-09-18T18:27:35.109Z",false,false,false,,["33.74569955028136","-84.34942245483398"]
-"Private Citizen","Private Residence","2013-09-18T18:27:44.886Z",false,false,false,,["33.75410286044052","-84.36259746551514"]
-"Business","Business","2013-09-18T18:27:55.713Z",true,true,false,,["33.74375471785338","-84.37457084655762"]
-"Private Citizen","Private Residence","2013-09-18T18:28:04.349Z",false,false,false,https://s3.amazonaws.com/gapp-map/5350ce75d2cb7d4dd3fcfe1af7f5e302.jpg,["33.74632402840422","-84.39087867736816"]
-"Private Citizen","Private Residence","2013-09-18T19:14:35.939Z",false,false,false,https://s3.amazonaws.com/gapp-map/f7705ca9e9a1c8db662d04c98d052ab9.jpg,["33.80425580201489","-84.33929443359375"]
-"Nonprofit Organization","Private Residence","2013-09-19T14:09:21.552Z",true,true,true,,["33.786566509489155","-84.39010620117188"]
+"Private Citizen","Private Residence","2013-09-19T18:33:15.464Z",false,false,false,,[false]
+"Private Citizen","Private Residence","2013-09-19T18:33:51.237Z",false,false,false,,[false]

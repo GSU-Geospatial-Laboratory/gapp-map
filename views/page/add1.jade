@@ -1,7 +1,8 @@
-div(modal="shouldBeOpen", close="closeOne()", options="opts")
-	div.modal-header
-		button(type="button", class="close", ng-click="closeOne()")
-			i.icon-remove-circle
-		h3 Add a garden (1/2)
-	div.modal-body
-		p To add a garden close this window and then click the map where you would like the location
+div(ng-controller='PlaceCtrl', tabindex="-1", role="dialog", aria-hidden="true").modal.fade#add1Modal
+	div.modal-dialog
+		div.modal-content
+			div.modal-header
+				button(type="button", class="close", data-dismiss="modal", aria-hidden="true") &times;
+				h4 Add a garden (1/2)
+			div.modal-body
+				p To add a garden close this window and then click the map where you would like the location

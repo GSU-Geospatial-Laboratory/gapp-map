@@ -79,24 +79,11 @@ function MapCtrl($scope, $http, $location) {
 }
 
 function AboutCtrl($scope, $http, $location) {
-	$scope.open = function() {
-		$scope.shouldBeOpen = true;
-	};
-
-	$scope.close = function() {
-		$scope.shouldBeOpen = false;
-		$location.path('/')
-		$('#map').removeClass("cross");
-	};
-
-	$scope.items = ['item1', 'item2'];
-
-	$scope.opts = {
-		backdropFade: true,
-		dialogFade: true
-	};
-
-	$scope.open()
+	$('#aboutModal').modal('show')
+	$('#aboutModal').on('hide.bs.modal', function() {
+		$location.path('/');
+		$scope.$apply();
+	})
 }
 
 function AppCtrl($scope, $http) {
@@ -112,104 +99,72 @@ function AppCtrl($scope, $http) {
 	});
 }
 
-function PlaceCtrl($scope, $http, $location) {
+function PlaceCtrl($scope, $http, $location, $timeout) {
 	$scope.needABetterBrowser = false;
 
 	var version = navigator.userAgent.match(/(msie) (\d+)/i);
-			if (version != null){
-				console.log(version)
-			  if (version[version.length-1] < 9){
-				$scope.needABetterBrowser = true;
-			  }
-			}
-
-
-	$scope.goAdd = function() {
-		$scope.shouldBeOpen = true;
-	}
-	$scope.goAbout = function() {
-		$location.path('/about')
+	if (version !== null) {
+		console.log(version);
+		if (version[version.length - 1] < 9) {
+			$scope.needABetterBrowser = true;
+		}
 	}
 
+	$scope.loc = addLatlng;
 
+	var path = $location.path();
 
-	$scope.loc = addLatlng
-
-	$scope.open = function() {
-		$scope.shouldBeOpen = true;
-	};
-
-	$scope.closeOne = function() {
-		$scope.shouldBeOpen = false;
-		map.addEventListener('click', function(e) {
-			addLatlng = [e.latlng.lat, e.latlng.lng]
-			$scope.$apply(function() {
+	if (path === '/add1') {
+		$('.collapse').collapse('hide')
+		$('#add1Modal').modal('show');
+		$('#add1Modal').on('hide.bs.modal', function() {
+			map.addEventListener('click', function(e) {
+				addLatlng = [e.latlng.lat, e.latlng.lng];
 				$location.path('/add2');
+				$scope.$apply();
 			});
-		})
-		$('#map').addClass("cross");
-
-
+			$('#map').addClass("cross");
+		});
 	}
-	$scope.close = function() {
-		$scope.shouldBeOpen = false;
-		$location.path('/')
+
+	if (path === '/add2') {
 		map.removeEventListener('click')
 		$('#map').removeClass("cross");
+		$('#add2Modal').modal('show');
+		$('#add2Modal').on('hidden.bs.modal', function() {
+			$location.path('/');
+			$scope.$apply();
+		});
 
-	};
-
-	$scope.opts = {
-		backdropFade: true,
-		dialogFade: true,
-		windowClass: 'modal-scrollable'
-		
-	};
-
-	$scope.open()
-
-
-	$scope.type = 'Private Citizen'
-	$scope.where = 'Private Residence'
-
-	$scope.closeModal = function() {
-		$location.path('/');
 	}
 
+	$scope.type = 'Private Citizen';
+	$scope.where = 'Private Residence';
+
 	$scope.uploadComplete = function(content, completed) {
-		console.log(content, completed)
+		console.log(content, completed);
 		if (completed) {
-			// $scope.response = JSON.parse(content);
-			// if ($scope.response.url == 'not an image') {
-			// 	return;
-			// } else {
-			// 	$scope.close()
-			// 	$scope.getMarkers()
-			// }
-			$scope.close();
-			$scope.getMarkers();
+			$('#add2Modal').modal('hide');
+			$timeout(($scope.getMarkers), 500)
 		}
-	};
+	}
 }
 
 function GardenCtrl($scope, $http, $location, $route, $routeParams) {
+	$('#gardenModal').modal('show')
+	$('#gardenModal').on('hide.bs.modal', function() {
+		$location.path('/');
+		$scope.$apply();
+	})
+
 	$scope.id = $routeParams.id
 	$scope.fbUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + $location.absUrl()
 
-	$scope.open = function() {
-		$scope.shouldBeOpen = true;
-	};
-
-	$scope.close = function() {
-		$scope.shouldBeOpen = false;
-		$location.path('/')
-	};
-
 	$scope.getClass = function(value) {
 		if (value) {
-			return 'icon-check icon-large'
+			return 'glyphicon glyphicon-check'
 		} else {
-			return 'icon-check-empty icon-large'
+			return 'glyphicon glyphicon-unchecked'
 		}
 	}
 
@@ -220,17 +175,10 @@ function GardenCtrl($scope, $http, $location, $route, $routeParams) {
 	if ($scope.thisGarden.image != null) {
 		$scope.imageUrl = 'https://s3.amazonaws.com/gapp-map/' + $scope.thisGarden.image
 	}
-
-	$scope.opts = {
-		backdropFade: true,
-		dialogFade: true
-	};
-
-	$scope.open()
 }
 
-MapCtrl.$inject = ['$scope','$http', '$location'];
-AboutCtrl.$inject = ['$scope','$http', '$location'];
+MapCtrl.$inject = ['$scope', '$http', '$location'];
+AboutCtrl.$inject = ['$scope', '$http', '$location'];
 AppCtrl.$inject = ['$scope', '$http'];
-PlaceCtrl.$inject = ['$scope','$http', '$location'];
-GardenCtrl.$inject = ['$scope','$http', '$location', '$route', '$routeParams'];
+PlaceCtrl.$inject = ['$scope', '$http', '$location', '$timeout'];
+GardenCtrl.$inject = ['$scope', '$http', '$location', '$route', '$routeParams'];

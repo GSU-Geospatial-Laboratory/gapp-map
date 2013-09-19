@@ -2,36 +2,43 @@
 html(ng-app="myApp")
 	head
 		meta(charset='utf8')
-		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		title Greater Atlanta Pollinator Partnership
-		link(rel='stylesheet', href='/css/bootstrap.min.css')
-		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css')
-		link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css')
+		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+		link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css')
 		//[if lte IE 8]
-			link(rel="stylesheet",href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css")
+			link(rel="stylesheet",href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css")
 			link(rel="stylesheet", href="/css/L.Control.Locate.ie.css")
+		//[if lt IE 9]>
+			script(src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js")
+			script(src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js")
 		link(rel='stylesheet', href='/css/app.min.css')
 
 	body(ng-controller="MapCtrl")
-		div.navbar.navbar-fixed-top
-			div.navbar-inner
-				div.container-fluid
-					a.brand(href='#').hidden-phone Greater Atlanta Pollinator Partnership
-					a.brand(href='#').visible-phone GAPP
-					p.navbar-btn.pull-right 
-						button.btn.btn-primary(ng-click='goAdd()')<i class='icon-plus-sign icon-large'></i><span class='hidden-phone'> Add a pollinator garden</span> 
-						| 	&nbsp; 
-						button.btn.btn-primary(ng-click='goAbout()')<i class='icon-info-sign icon-large'></i><span class='hidden-phone'> About<span>
-						|	&nbsp;
-						button.btn.btn-primary(ng-click='downloadData()')<i class='icon-cloud-download icon-large'></i><span class='hidden-phone'> Download the data<span>
-							
-		div#map-container
-			div#map
+		div.navbar.navbar-default.navbar-fixed-top
+			div.container
+				div.navbar-header
+					button(type="button", data-toggle="collapse", data-target=".navbar-collapse").navbar-toggle
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#').visible-xs.visible-sm GAPP
+					a.navbar-brand(href='#').hidden-sm.hidden-xs Greater Atlanta Pollinator Partnership
+				div.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						li
+							a(href='/#/add1')<span class="glyphicon glyphicon-plus-sign"></span> Add a pollinator garden
+						li
+							a(href='/#/about')<span class='glyphicon glyphicon-info-sign'></span> About
+						li
+							a(ng-click='downloadData()')<span class='glyphicon glyphicon-download'></span> Download the data
+								
+		div#map
 		block body
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-		script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')
+		script(src='/bootstrap/dist/js/bootstrap.min.js')
 		script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js')
 		script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js')
-		script(src='//cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.2/leaflet.js')
+		script(src='//cdnjs.cloudflare.com/ajax/libs/leaflet/0.6.4/leaflet.js')
 		script(src='/js/esri-leaflet.min.js')
 		script(src='/js/app.min.js')
