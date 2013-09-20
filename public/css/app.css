@@ -25,7 +25,6 @@ input[type="radio"], input[type="checkbox"] {
 .navbar .navbar-brand {
     font-weight: bold;
     font-size: 25px;
-    color: black;
 }
 .navbar {
     opacity: 0.9;
