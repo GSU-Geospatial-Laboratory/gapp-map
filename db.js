@@ -54,9 +54,7 @@ var placeSchema = new Schema({
 		type: String,
 	},
 	loc: {
-		type: Array,
-		index: '2dsphere',
-		required: true
+		type: Array
 	},
 	comments: [],
 	support: []

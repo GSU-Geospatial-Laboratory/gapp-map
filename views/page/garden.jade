@@ -9,7 +9,7 @@ div(ng-controller='GardenCtrl', tabindex="-1", role="dialog", aria-hidden="true"
 				p <i ng:class="getClass(thisGarden.habitat)"> </i> Provides a habitat for pollinators
 				p <i ng:class="getClass(thisGarden.foodSource)"> </i> Provides a food source for pollinators
 				p <i ng:class="getClass(thisGarden.noPesticides)"> </i> Provides a pesticide free garden
-				img(ng-show="thisGarden.image != null", src='{{imageUrl}}')
+				img(ng-show="thisGarden.image != null", src='{{imageUrl}}').img-responsive
 				<br>
 				
 			div.modal-footer
