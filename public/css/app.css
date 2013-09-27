@@ -13,6 +13,11 @@ label {
 input[type="radio"], input[type="checkbox"] {
     margin: 0;
 }
+
+.modal-open, .modal-open .navbar-fixed-top {
+  margin-right: 0 !important;
+}
+
 #loading {
     position: absolute;
     width: 220px;
