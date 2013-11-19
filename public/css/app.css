@@ -18,6 +18,30 @@ input[type="radio"], input[type="checkbox"] {
   margin-right: 0 !important;
 }
 
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: #ad3810;
+}
+.navbar-default {
+  background-color: #ce4213;
+  border-color: #b03810;
+}
+
+.navbar-default .navbar-brand {
+  color: #fefefe;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #e4e4e4;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fefefe;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+  color: #e4e4e4;
+}
+
 #loading {
     position: absolute;
     width: 220px;
