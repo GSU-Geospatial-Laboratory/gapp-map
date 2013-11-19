@@ -18,6 +18,8 @@ input[type="radio"], input[type="checkbox"] {
   margin-right: 0 !important;
 }
 
+/* Overwrite Bootstrap Navbar */
+
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
   border-color: #ad3810;
 }
@@ -43,6 +45,10 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 .navbar-default .navbar-toggle .icon-bar {
+  background-color: #fefefe;
+}
+
+.navbar-default .navbar-toggle .icon-bar button:hover {
   background-color: #ce4213;
 }
 

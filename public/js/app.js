@@ -1,6 +1,6 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
+//App declaration, add ngUpload and ngRoute modules.  Also declares routes and templates
 angular.module('myApp', ['ngUpload', 'ngRoute']).
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/add1', {

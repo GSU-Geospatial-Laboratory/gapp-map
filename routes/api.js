@@ -1,3 +1,5 @@
+//Controller for API routes
+
 var fs = require('fs');
 var gm = require('gm'),
 	imageMagick = gm.subClass({
@@ -12,6 +14,7 @@ var amazonS3 = require('awssum-amazon-s3');
 
 var db = require('../db.js');
 
+//Set up S3 with env variables
 var s3 = new amazonS3.S3({
 	'accessKeyId': process.env.AMAZON_S3_KEY,
 	'secretAccessKey': process.env.AMAZON_S3_SECRET,
@@ -26,6 +29,7 @@ uploadItemQueue.drain = function() {
 	fmt.sep();
 };
 
+//test whether it is a jpg or png
 function isImage(type) {
 	if (type == 'image/jpeg' || type == 'image/png') {
 		return true;
@@ -34,6 +38,7 @@ function isImage(type) {
 	}
 }
 
+//updates downloadable csv
 function updateData() {
 	db.Place.find({
 		status: true
@@ -56,6 +61,7 @@ function updateData() {
 	})
 }
 
+//uploads a file to s3
 function uploadItem(item, req) {
 	var fileName = item.path.substring(5) + '.jpg'
 	fs.stat(item.path, function(err, file_info) {
@@ -63,7 +69,6 @@ function uploadItem(item, req) {
 			console.log(err, 'Error reading file');
 			return;
 		}
-		//console.log(file_info)
 		// create a read stream
 		var bodyStream = fs.createReadStream(item.path);
 
@@ -148,14 +153,7 @@ function saveItem(req, fileName) {
 		})
 	}
 }
-
-
-exports.name = function(req, res) {
-	res.json({
-		name: 'Bob'
-	});
-};
-
+//add a garden location
 exports.addPlace = function(req, res) {
 	res.setHeader('Content-Type', 'text/html');
 	var fileName = null;
@@ -189,6 +187,7 @@ exports.addPlace = function(req, res) {
 	res.send(JSON.stringify(responseObj));
 }
 
+//get all places with status == true
 exports.getPlace = function(req, res) {
 	db.Place.find({
 		status: true
