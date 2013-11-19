@@ -42,6 +42,10 @@ input[type="radio"], input[type="checkbox"] {
   color: #e4e4e4;
 }
 
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ce4213;
+}
+
 #loading {
     position: absolute;
     width: 220px;

@@ -34,7 +34,8 @@
     "awssum-amazon": "~1.0.2",
     "async": "~0.2.8",
     "request": "~2.21.0",
-    "json2csv-customgapp": "git://github.com/mejackreed/json2csv.git"
+    "json2csv-customgapp": "git://github.com/mejackreed/json2csv.git",
+    "gm": "~1.13.3"
   },
   "author": "Jack Reed",
   "license": "WTFPL"
