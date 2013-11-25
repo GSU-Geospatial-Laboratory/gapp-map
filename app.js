@@ -33,7 +33,7 @@ app.configure('production', function(){
 
 app.get('/', routes.index);
 app.get('/page/:name', routes.pages);
-app.get('/partials/:name', routes.partials)
+app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.post('/api/place', api.addPlace);
